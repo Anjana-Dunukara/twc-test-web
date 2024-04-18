@@ -4,6 +4,7 @@ import Register from "./pages/Register";
 import Welcome from "./pages/Welcome";
 import NewContact from "./pages/NewContact";
 import Contacts from "./pages/Contacts";
+import ProtectedRoutes from "./components/ProtectedRoutes";
 
 function App() {
   return (
@@ -12,9 +13,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/welcome" element={<Welcome />} />
-          <Route path="/newcontact" element={<NewContact />} />
-          <Route path="/contacts" element={<Contacts />} />
+          <ProtectedRoutes>
+            <Route path="/welcome" element={<Welcome />} />
+            <Route path="/newcontact" element={<NewContact />} />
+            <Route path="/contacts" element={<Contacts />} />
+          </ProtectedRoutes>
         </Routes>
       </BrowserRouter>
     </>

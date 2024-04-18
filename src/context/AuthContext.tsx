@@ -2,11 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { createContext } from "react";
 
 interface UserData {
-  // Define the structure of user data
-  // For example:
   id: string;
-  username: string;
-  // Add more fields as needed
+  email: string;
 }
 
 interface AuthContextType {
@@ -39,7 +36,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   }, []);
 
   const login = (newToken: string, newData: UserData) => {
-    localStorage.setItem("user_data", JSON.stringify({ userToken: newToken, user: newData }));
+    localStorage.setItem(
+      "user_data",
+      JSON.stringify({ userToken: newToken, user: newData })
+    );
     setToken(newToken);
     setUserData(newData);
     setIsAuthenticated(true);
@@ -60,7 +60,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     logout,
   };
 
-  return <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
+  );
 };
 
 // eslint-disable-next-line react-refresh/only-export-components
