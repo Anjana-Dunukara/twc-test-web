@@ -42,7 +42,7 @@ function Welcome() {
             add your first contact
           </button>
           <div className="absolute bottom-5 -right-[12.5rem] flex justify-end align-middle items-center gap-2">
-            <BiLogOutCircle className="font-futura text-[25px] leading-[50px] font-regular underline text-white" />
+            <BiLogOutCircle className="font-futura text-[32.25px] leading-[50px] font-bold underline text-white" />
             <button
               type="button"
               onClick={handleLogout}
