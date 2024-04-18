@@ -3,7 +3,7 @@ import backgroundImg from "../assets/contact-us-customer-service-sketch-doodle-i
 import imageSrc from "../assets/Group 1.png";
 import { IoIosArrowBack } from "react-icons/io";
 
-function LoginPage() {
+function Register() {
   const navigate = useNavigate();
 
   return (
@@ -78,4 +78,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default Register;
