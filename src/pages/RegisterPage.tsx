@@ -2,9 +2,33 @@ import { useNavigate } from "react-router-dom";
 import backgroundImg from "../assets/contact-us-customer-service-sketch-doodle-icons-seamless-pattern-vector-illustration-2JB18KT 1.png";
 import imageSrc from "../assets/Group 1.png";
 import { IoIosArrowBack } from "react-icons/io";
+import { Register } from "../services/AuthServices";
 
-function Register() {
+function RegisterPage() {
   const navigate = useNavigate();
+
+  const handleSubmit = async (e: {
+    preventDefault: () => void;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    target: any;
+  }) => {
+    e.preventDefault();
+
+    const target = e.target as typeof e.target & {
+      email: { value: string };
+      password: { value: string };
+    };
+
+    const email = target.email.value;
+    const password = target.password.value;
+
+    try {
+      await Register(email, password);
+      navigate("/welcome");
+    } catch (error) {
+      console.error("Error registering user:", error);
+    }
+  };
 
   return (
     <div className="bg-gray-200 min-h-screen flex items-center justify-center relative">
@@ -51,6 +75,7 @@ function Register() {
             <div className="flex justify-start items-center mt-11 align-middle">
               <button
                 type="submit"
+                onSubmit={handleSubmit}
                 className="bg-blue-500 text-white rounded-full border-white px-6 border-2 hover:bg-blue-600 transition duration-200 font-futura text-[25px] leading-[50px] font-regular"
               >
                 register
@@ -78,4 +103,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default RegisterPage;
